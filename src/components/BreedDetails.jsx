@@ -4,7 +4,7 @@ import ImageCarousel from "./ImageCarousel";
 
 function BreedDetails() {
   const location = useLocation();
-  const { breed } = location.state;
+  const { breed, type } = location.state;
 
   return (
     <div className="pt-20 px-6">
@@ -28,12 +28,18 @@ function BreedDetails() {
             </h3>
           </div>
           <div>
-            <h3 className="text-xl font-semibold">
-              Weight: {breed.weight.imperial} lbs
-            </h3>
-            <h3 className="text-xl font-semibold">
-              Height: {breed.height.imperial} in
-            </h3>
+            {breed.height ? (
+              <>
+                <h3 className="text-xl font-semibold">
+                  Weight: {breed.weight.imperial} lbs
+                </h3>
+                <h3 className="text-xl font-semibold">
+                  Height: {breed.height.imperial} in
+                </h3>
+              </>
+            ) : (
+              <></>
+            )}
             <h3 className="text-xl font-semibold">
               Temperament: {breed.temperament}
             </h3>
@@ -41,8 +47,19 @@ function BreedDetails() {
           </div>
         </div>
       </div>
+
+      {breed.description ? (
+        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <h3 className="text-xl font-semibold">
+            Description: {breed.description}
+          </h3>
+        </div>
+      ) : (
+        <></>
+      )}
+
       <div className="mt-8 mb-16 flex items-center justify-center">
-        <ImageCarousel breedId={breed.id} name={breed.name} />
+        <ImageCarousel breedId={breed.id} name={breed.name} type={type} />
       </div>
     </div>
   );

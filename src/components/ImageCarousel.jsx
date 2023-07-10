@@ -1,22 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { getImages } from "../functions/funtions";
+import { getDogsImages, getCatsImages } from "../functions/funtions";
+import LoadingSpinner from "./LoadingSpinner";
 
-function ImageCarousel({ breedId, name }) {
+function ImageCarousel({ breedId, name, type }) {
   const [images, setImages] = useState([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const { result } = await getImages(breedId);
-        setImages(result);
+        if (type === "dog") {
+          const { result } = await getDogsImages(breedId);
+          setImages(result);
+        } else {
+          const { result } = await getCatsImages(breedId);
+          setImages(result);
+        }
       } catch (error) {
         console.error(error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchImages();
-  }, [breedId]);
+  }, [breedId, type]);
 
   const handlePrevImage = () => {
     setCurrentImageIndex((prevIndex) => {
@@ -36,39 +45,47 @@ function ImageCarousel({ breedId, name }) {
   return (
     <div className="flex items-center justify-center">
       <div className="w-80 bg-white shadow-md rounded-lg p-6 mb-8">
-        {images.length > 0 ? (
-          <div className="relative">
-            <button
-              className="left-2 transform -translate-y-1/2 bg-gray-200 p-2 rounded-full absolute top-1/2 hover:bg-blue/50"
-              onClick={handlePrevImage}
-            >
-              Prev
-            </button>
-            <img
-              src={images[currentImageIndex].url}
-              alt={name}
-              className="w-full h-auto rounded"
-            />
-            <button
-              className="right-2 transform -translate-y-1/2 bg-gray-200 p-2 rounded-full absolute top-1/2 hover:bg-green/50 "
-              onClick={handleNextImage}
-            >
-              Next
-            </button>
-            <div className="flex items-center justify-center mt-4">
-              {images.map((_, index) => (
-                <button
-                  key={index}
-                  className={`w-2 h-2 rounded-full mx-1 focus:outline-none ${
-                    index === currentImageIndex ? "bg-gray-800" : "bg-gray-300"
-                  }`}
-                  onClick={() => handleSelectImage(index)}
-                ></button>
-              ))}
-            </div>
-          </div>
+        {isLoading ? (
+          <LoadingSpinner />
         ) : (
-          <p>No images available.</p>
+          <>
+            {images.length > 0 ? (
+              <div className="relative">
+                <button
+                  className="left-2 transform -translate-y-1/2 bg-gray-200 p-2 rounded-full absolute top-1/2 hover:bg-blue/50"
+                  onClick={handlePrevImage}
+                >
+                  Prev
+                </button>
+                <img
+                  src={images[currentImageIndex].url}
+                  alt={name}
+                  className="w-full h-auto rounded"
+                />
+                <button
+                  className="right-2 transform -translate-y-1/2 bg-gray-200 p-2 rounded-full absolute top-1/2 hover:bg-green/50 "
+                  onClick={handleNextImage}
+                >
+                  Next
+                </button>
+                <div className="flex items-center justify-center mt-4">
+                  {images.map((_, index) => (
+                    <button
+                      key={index}
+                      className={`w-2 h-2 rounded-full mx-1 focus:outline-none ${
+                        index === currentImageIndex
+                          ? "bg-gray-800"
+                          : "bg-gray-300"
+                      }`}
+                      onClick={() => handleSelectImage(index)}
+                    ></button>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <p>No images available.</p>
+            )}
+          </>
         )}
       </div>
     </div>

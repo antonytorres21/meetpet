@@ -1,11 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function RenderCards({ breeds }) {
+function RenderCards({ breeds, type }) {
   const navigate = useNavigate();
 
   const handleCardClick = (breed) => {
-    navigate(`/dogs/${breed.id}`, { state: { breed } });
+    if (type === "dog") {
+      navigate(`/dogs/${breed.name}`, { state: { breed, type } });
+    } else {
+      navigate(`/cats/${breed.name}`, { state: { breed, type } });
+    }
   };
 
   return (
@@ -17,12 +21,18 @@ function RenderCards({ breeds }) {
           onClick={() => handleCardClick(breed)}
         >
           <div className="bg-white shadow-md rounded-lg overflow-hidden transition-all ease-in-out delay-150 hover:-translate-y-5 hover:scale-110 duration-500">
-            <img
-              src={breed.image.url}
-              alt={breed.name}
-              className="object-cover h-64 w-full"
-              style={{ height: "200px", width: "300px" }}
-            />
+            {breed.reference_image_id ? (
+              <img
+                src={breed.image.url}
+                alt={breed.name}
+                className="object-cover h-64 w-full"
+                style={{ height: "200px", width: "300px" }}
+              />
+            ) : (
+              <div>
+                <p className="text-center pt-5">No images available.</p>{" "}
+              </div>
+            )}
             <div className="p-4">
               <h3 className="text-lg font-semibold">{breed.name}</h3>
             </div>

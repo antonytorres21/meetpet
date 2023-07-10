@@ -72,7 +72,7 @@ function Dogs() {
   };
 
   const renderCards = () => {
-    return <RenderCards breeds={breeds} />;
+    return <RenderCards breeds={breeds} type={"dog"} />;
   };
 
   return (
