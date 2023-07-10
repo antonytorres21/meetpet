@@ -11,10 +11,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomeComponent />} />
+          <Route exact path="/dogs/:id" element={<BreedDetails />} />
           <Route path="/dogs" element={<Dogs />} />
-          <Route path="/dogs/:id" element={<BreedDetails />} />
+          <Route exact path="/cats/:id" element={<BreedDetails />} />
           <Route path="/cats" element={<Cats />} />
-          <Route path="/cats/:id" element={<BreedDetails />} />
         </Route>
       </Routes>
     </Router>

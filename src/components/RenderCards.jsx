@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 function RenderCards({ breeds }) {
   const navigate = useNavigate();
 
-  const handleCardClick = (id) => {
-    navigate(`/dogs/${id}`);
+  const handleCardClick = (breed) => {
+    navigate(`/dogs/${breed.id}`, { state: { breed } });
   };
 
   return (
@@ -13,9 +13,8 @@ function RenderCards({ breeds }) {
       {breeds.map((breed) => (
         <div
           key={breed.id}
-          className="max-w-sm mx-auto"
-          onClick={() => handleCardClick(breed.id)}
-          style={{ cursor: "pointer" }}
+          className="max-w-sm mx-auto hover:cursor-pointer"
+          onClick={() => handleCardClick(breed)}
         >
           <div className="bg-white shadow-md rounded-lg overflow-hidden transition-all ease-in-out delay-150 hover:-translate-y-5 hover:scale-110 duration-500">
             <img

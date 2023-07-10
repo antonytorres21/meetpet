@@ -52,7 +52,7 @@ export async function getDogsByPage(page, limit) {
   }
 }
 
-export async function getDogsByName(page, limit, search) {
+export async function getImages(id) {
   const headers = new Headers();
   headers.append("x-api-key", key_Dog);
   headers.append("Content-Type", "application/json");
@@ -64,17 +64,14 @@ export async function getDogsByName(page, limit, search) {
 
   try {
     const response = await fetch(
-      `https://api.thedogapi.com/v1/breeds?limit=${limit}&page=${page}&order=ASC&search=${encodeURIComponent(
-        search
-      )}`,
+      `https://api.thedogapi.com/v1/images/search?breed_ids=${id}&limit=10`,
       requestOptions
     );
-    const totalCount = parseInt(response.headers.get("Pagination-Count"), 10);
-    const totalPages = calculateTotalPages(totalCount, limit);
     const result = await response.json();
-    return { result, totalPages };
+    return { result };
   } catch (error) {
     console.error(error);
     throw error;
   }
 }
+

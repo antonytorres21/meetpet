@@ -22,8 +22,6 @@ function Dogs() {
       let data;
       let totalPages;
 
-      searchTerm ? console.log("") : console.log(searchTerm);
-
       if (searchTerm) {
         const response = await getDogs();
         if (!searchTerm.length) {
@@ -37,7 +35,6 @@ function Dogs() {
           totalPages = calculateTotalPages(data.length, itemsPerPage);
         }
       } else {
-        
         const response = await getDogsByPage(currentPage, itemsPerPage);
         data = response.result;
         totalPages = response.totalPages;

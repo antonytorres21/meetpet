@@ -7,7 +7,7 @@ function Pagination({
   handleToggleShowAllPages,
   showAllPages,
 }) {
-  const maxVisiblePages = 6; // Número máximo de botones de paginación visibles
+  const maxVisiblePages = 6;
 
   const renderPaginationButtons = () => {
     const visiblePages = showAllPages ? totalPages : maxVisiblePages;
