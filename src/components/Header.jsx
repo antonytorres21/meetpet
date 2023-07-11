@@ -51,7 +51,10 @@ function Header() {
                 </div>
               </div>
             </div>
-            <div className="-mr-2 flex md:hidden">
+            <div className="flex items-center mr-auto md:hidden">
+              <img className="h-12 md:mr-3" src={logo1} alt="Meet Your Pet" />
+            </div>
+            <div className="flex md:hidden items-center justify-end">
               <button
                 onClick={toggleNavbar}
                 type="button"
@@ -101,25 +104,25 @@ function Header() {
           <div className="md:hidden" id="mobile-menu">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <Link
-                href="/"
+                to="/"
                 className="text-white block px-3 py-2 rounded-md text-base font-medium"
               >
                 Home
               </Link>
               <Link
-                href="/"
+                to="/dogs"
                 className="text-white block px-3 py-2 rounded-md text-base font-medium"
               >
                 Meet your Dog
               </Link>
               <Link
-                href="/"
+                to="/cats"
                 className="text-white block px-3 py-2 rounded-md text-base font-medium"
               >
                 Meet your Cat
               </Link>
               <Link
-                href="/"
+                to="/about"
                 className="text-white block px-3 py-2 rounded-md text-base font-medium"
               >
                 About this

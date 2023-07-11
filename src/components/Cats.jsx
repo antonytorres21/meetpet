@@ -39,8 +39,6 @@ function Cats() {
         data = response.result;
         totalPages = response.totalPages;
       }
-      console.log(data);
-
       setBreeds(data);
       setTotalPages(totalPages);
     } catch (error) {

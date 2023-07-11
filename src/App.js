@@ -4,6 +4,8 @@ import Layout from "./components/Layout";
 import Dogs from "./components/Dogs";
 import Cats from "./components/Cats";
 import BreedDetails from "./components/BreedDetails";
+import Error404Page from "./components/Error404Page";
+
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
           <Route path="/dogs" element={<Dogs />} />
           <Route exact path="/cats/:id" element={<BreedDetails />} />
           <Route path="/cats" element={<Cats />} />
+          <Route path="*" element={<Error404Page />} />
         </Route>
       </Routes>
     </Router>

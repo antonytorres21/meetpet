@@ -30,7 +30,7 @@ function RenderCards({ breeds, type }) {
               />
             ) : (
               <div>
-                <p className="text-center pt-5">No images available.</p>{" "}
+                <p className="text-center pt-5">No preview image available.</p>
               </div>
             )}
             <div className="p-4">
