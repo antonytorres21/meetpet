@@ -101,27 +101,31 @@ function Header() {
           </div>
         </div>
         {isOpen && (
-          <div className="md:hidden" id="mobile-menu">
+          <div className="md:hidden flex justify-center text-center" id="mobile-menu">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <Link
+                onClick={toggleNavbar}
                 to="/"
                 className="text-white block px-3 py-2 rounded-md text-base font-medium"
               >
                 Home
               </Link>
               <Link
+                onClick={toggleNavbar}
                 to="/dogs"
                 className="text-white block px-3 py-2 rounded-md text-base font-medium"
               >
                 Meet your Dog
               </Link>
               <Link
+                onClick={toggleNavbar}
                 to="/cats"
                 className="text-white block px-3 py-2 rounded-md text-base font-medium"
               >
                 Meet your Cat
               </Link>
               <Link
+                onClick={toggleNavbar}
                 to="/about"
                 className="text-white block px-3 py-2 rounded-md text-base font-medium"
               >
