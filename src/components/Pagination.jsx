@@ -43,9 +43,7 @@ function Pagination({
       >
         Prev
       </button>
-      <div className="flex flex-wrap">
-        {renderPaginationButtons()}
-      </div>
+      <div className="flex flex-wrap">{renderPaginationButtons()}</div>
       {totalPages > maxVisiblePages && !showAllPages && (
         <button
           onClick={handleToggleShowAllPages}
@@ -65,8 +63,8 @@ function Pagination({
       <button
         onClick={() => handlePageChange(currentPage + 1)}
         className={`mx-1 px-3 py-1 rounded-md ${
-          currentPage === totalPages - 1 ? "bg-gray-300" : "bg-blue text-white"
-        }`}
+          currentPage === totalPages - 1 ? "bg-gray-300" : "bg-blue text-white "
+        } ${currentPage === totalPages - 1 ? "invisible" : "visible"} `}
         disabled={currentPage === totalPages - 1}
       >
         Next
