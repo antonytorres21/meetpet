@@ -53,7 +53,7 @@ function About() {
               <h3 className="mt-6 text-xl font-semibold text-gray-800 text-center">
                 The Cat API
               </h3>
-              <p className="mt-2 text-gray-600">
+              <p className="mt-2 text-gray-600 text-center">
                 The Cat API is a comprehensive resource for cat information. It
                 allows users to explore different cat breeds, their images,
                 temperaments, and other details.

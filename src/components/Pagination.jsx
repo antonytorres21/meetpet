@@ -43,7 +43,9 @@ function Pagination({
       >
         Prev
       </button>
-      {renderPaginationButtons()}
+      <div className="flex flex-wrap">
+        {renderPaginationButtons()}
+      </div>
       {totalPages > maxVisiblePages && !showAllPages && (
         <button
           onClick={handleToggleShowAllPages}
