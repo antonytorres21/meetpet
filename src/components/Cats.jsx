@@ -16,10 +16,11 @@ function Cats() {
   const [totalPages, setTotalPages] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
   const [refreshData, setRefreshData] = useState(false);
+  const [showAllPages, setShowAllPages] = useState(false);
 
   const fetchBreeds = useCallback(async () => {
     try {
-      let data;
+      let data = [];
       let totalPages;
 
       if (searchTerm) {
@@ -29,7 +30,8 @@ function Cats() {
           data = response.result;
           totalPages = response.totalPages;
         } else {
-          data = response.filter((breed) =>
+          console.log(response);
+          data = response.result.filter((breed) =>
             breed.name.toLowerCase().includes(searchTerm.toLowerCase())
           );
           totalPages = calculateTotalPages(data.length, itemsPerPage);
@@ -69,6 +71,10 @@ function Cats() {
     setSearchTerm(newSearchTerm);
     setCurrentPage(0);
   };
+  
+   const handleToggleShowAllPages = () => {
+     setShowAllPages(!showAllPages);
+   };
 
   const renderCards = () => {
     return <RenderCards breeds={breeds} type={"cat"} />;
@@ -123,6 +129,8 @@ function Cats() {
         currentPage={currentPage}
         totalPages={totalPages}
         handlePageChange={handlePageChange}
+        handleToggleShowAllPages={handleToggleShowAllPages}
+        showAllPages={showAllPages}
       />
     </div>
   );

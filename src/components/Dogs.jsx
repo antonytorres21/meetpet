@@ -16,6 +16,7 @@ function Dogs() {
   const [totalPages, setTotalPages] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
   const [refreshData, setRefreshData] = useState(false);
+  const [showAllPages, setShowAllPages] = useState(false);
 
   const fetchBreeds = useCallback(async () => {
     try {
@@ -29,6 +30,7 @@ function Dogs() {
           data = response.result;
           totalPages = response.totalPages;
         } else {
+          console.log(response);
           data = response.filter((breed) =>
             breed.name.toLowerCase().includes(searchTerm.toLowerCase())
           );
@@ -69,6 +71,10 @@ function Dogs() {
 
     setSearchTerm(newSearchTerm);
     setCurrentPage(0);
+  };
+
+  const handleToggleShowAllPages = () => {
+    setShowAllPages(!showAllPages);
   };
 
   const renderCards = () => {
@@ -124,6 +130,8 @@ function Dogs() {
         currentPage={currentPage}
         totalPages={totalPages}
         handlePageChange={handlePageChange}
+        handleToggleShowAllPages={handleToggleShowAllPages}
+        showAllPages={showAllPages}
       />
     </div>
   );
