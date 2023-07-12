@@ -3,6 +3,7 @@ import HomeComponent from "./components/HomeComponent";
 import Layout from "./components/Layout";
 import Dogs from "./components/Dogs";
 import Cats from "./components/Cats";
+import About from "./components/About";
 import BreedDetails from "./components/BreedDetails";
 import Error404Page from "./components/Error404Page";
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/dogs" element={<Dogs />} />
           <Route exact path="/cats/:id" element={<BreedDetails />} />
           <Route path="/cats" element={<Cats />} />
+          <Route path="/about" element={<About />} />
           <Route path="*" element={<Error404Page />} />
         </Route>
       </Routes>
