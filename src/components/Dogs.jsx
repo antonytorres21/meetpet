@@ -83,8 +83,8 @@ function Dogs() {
 
   return (
     <div className="container mx-auto pt-20">
-      <div className="flex justify-between items-center mb-4">
-        <div className="px-6 rounded-md items-center justify-center flex">
+      <div className="flex flex-col md:flex-row justify-between items-center mb-4">
+        <div className="px-6 rounded-md items-center justify-center flex my-4 md:my-0">
           <input
             type="text"
             placeholder="Search"
