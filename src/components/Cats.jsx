@@ -82,27 +82,22 @@ function Cats() {
 
   return (
     <div className="container mx-auto pt-20">
-      <div className="flex justify-between items-center mb-4">
-        <div className="flex flex-col md:flex-row items-center justify-between mb-4">
-          <div className="px-6 mb-2 md:mb-0 md:w-auto">
-            <input
-              type="text"
-              placeholder="Search"
-              className="border border-gray-300 rounded-l-lg h-8 px-2"
-              value={searchTerm}
-              onChange={handleSearch}
-            />
-          </div>
-          <div className="px-6 md:w-auto">
-            <button
-              className="bg-gray-300 border-black h-8 w-7 flex items-center justify-center rounded-r-lg"
-              onClick={handleItemsPerPageChange}
-            >
-              <IoIosSearch className="" />
-            </button>
-          </div>
+      <div className="flex flex-col md:flex-row justify-between items-center mb-4">
+        <div className="px-6 rounded-md items-center justify-center flex my-4 md:my-0">
+          <input
+            type="text"
+            placeholder="Search"
+            className="border border-gray-300 rounded-l-lg h-8 px-2"
+            value={searchTerm}
+            onChange={handleSearch}
+          />
+          <button
+            className="bg-gray-300 border-black h-8 w-7 flex items-center justify-center rounded-r-lg"
+            onClick={handleItemsPerPageChange}
+          >
+            <IoIosSearch className="" />
+          </button>
         </div>
-
         <div className="px-6">
           <select
             className="border border-gray-300 px-6 py-2 rounded-md flex"
@@ -115,6 +110,7 @@ function Cats() {
           </select>
         </div>
       </div>
+
       {!breeds.length ? (
         !breeds.length && searchTerm.length ? (
           <div className="flex flex-col items-center justify-center h-screen">
