@@ -38,7 +38,7 @@ function Pagination({
         onClick={() => handlePageChange(currentPage - 1)}
         className={`mx-1 px-3 py-1 rounded-md ${
           currentPage === 0 ? "bg-gray-300" : "bg-blue text-white"
-        }`}
+        } ${currentPage === 0 ? "invisible" : "visible"}`}
         disabled={currentPage === 0}
       >
         Prev

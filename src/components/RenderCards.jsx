@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import dog from "../assets/thedogapi.png";
+import cat from "../assets/thecatapi.png";
 
 function RenderCards({ breeds, type }) {
   const navigate = useNavigate();
@@ -25,16 +27,22 @@ function RenderCards({ breeds, type }) {
               <img
                 src={breed.image.url}
                 alt={breed.name}
-                className="object-cover h-64 w-full"
+                className="object-contain h-64 w-full"
                 style={{ height: "200px", width: "300px" }}
               />
             ) : (
               <div>
+                <img
+                  src={type === "dog" ? dog : cat}
+                  alt={type === "dog" ? "dog" : "cat"}
+                  className="object-contain"
+                  style={{ height: "200px", width: "300px" }}
+                />
                 <p className="text-center pt-5">No preview image available.</p>
               </div>
             )}
             <div className="p-4">
-              <h3 className="text-lg font-semibold">{breed.name}</h3>
+              <h3 className="text-lg font-semibold text-center">{breed.name}</h3>
             </div>
           </div>
         </div>
