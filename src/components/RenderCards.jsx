@@ -27,7 +27,7 @@ function RenderCards({ breeds, type }) {
               <img
                 src={breed.image.url}
                 alt={breed.name}
-                className="object-contain h-64 w-full"
+                className="object-cover h-64 w-full"
                 style={{ height: "200px", width: "300px" }}
               />
             ) : (
