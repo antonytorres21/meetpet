@@ -45,6 +45,7 @@ function ImageCarousel({ breedId, name, type }) {
   return (
     <div className="flex items-center justify-center">
       <div className="w-80 bg-white shadow-md rounded-lg p-6 mb-8">
+        <h2 className="text-center text-lg pb-2">Breeds: {name}</h2>
         {isLoading ? (
           <LoadingSpinner />
         ) : (

@@ -144,3 +144,14 @@ export async function getCatsImages(id) {
     throw error;
   }
 }
+
+export async function getCountry(code) {
+  try {
+    const response = await fetch(`https://flagcdn.com/16x12/${code}.png`);
+    console.log(response);
+    return { response };
+  } catch (error) {
+    console.error(error);
+    throw new Error("Error al obtener la bandera del país");
+  }
+}

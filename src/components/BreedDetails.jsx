@@ -9,52 +9,71 @@ function BreedDetails() {
   return (
     <div className="pt-20 px-6">
       <h2 className="text-3xl text-center font-bold mb-4">Breed Details</h2>
-      <div className="bg-white rounded-lg shadow-md p-6 mb-8 ">
-        <div className="grid grid-cols-2 gap-6 ">
+      <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
-            <h3 className="text-xl font-semibold">Name: {breed.name}</h3>
-            <h3 className="text-xl font-semibold">
-              Country Code: {breed.country_code}
-            </h3>
-            <h3 className="text-xl font-semibold">
-              Bred For: {breed.bred_for}
-            </h3>
-            <h3 className="text-xl font-semibold">
-              Breed Group: {breed.breed_group}
-            </h3>
-            <h3 className="text-xl font-semibold">
-              Life Span: {breed.life_span}
-            </h3>
+            <h3 className="text-2xl font-semibold mb-4">Name: {breed.name}</h3>
+            <p className="text-xl">
+              <span className="font-semibold">Country Code:</span>{" "}
+              {breed.country_code ? (
+                <span className="flex items-center">
+                  <span className="mr-1">{breed.country_code}</span>
+                  <img
+                    src={`https://flagcdn.com/16x12/${breed.country_code.toLowerCase()}.png`}
+                    srcSet={`https://flagcdn.com/32x24/${breed.country_code.toLowerCase()}.png 2x, https://flagcdn.com/48x36/${breed.country_code.toLowerCase()}.png 3x`}
+                    width="16"
+                    height="12"
+                    alt={breed.country_code}
+                  />
+                </span>
+              ) : (
+                "Unspecified"
+              )}
+            </p>
+
+            <p className="text-xl">
+              <span className="font-semibold">Bred For:</span>{" "}
+              {breed.bred_for ? breed.bred_for : "unspecified"}
+            </p>
+            <p className="text-xl">
+              <span className="font-semibold">Breed Group:</span>{" "}
+              {breed.breed_group ? breed.breed_group : "unspecified"}
+            </p>
+            <p className="text-xl">
+              <span className="font-semibold">Life Span:</span>{" "}
+              {breed.life_span ? breed.life_span : "unspecified"}
+            </p>
           </div>
           <div>
-            {breed.height ? (
+            {breed.height && (
               <>
-                <h3 className="text-xl font-semibold">
-                  Weight: {breed.weight.imperial} lbs
-                </h3>
-                <h3 className="text-xl font-semibold">
-                  Height: {breed.height.imperial} in
-                </h3>
+                <p className="text-xl">
+                  <span className="font-semibold">Weight:</span>{" "}
+                  {breed.weight.imperial} lbs
+                </p>
+                <p className="text-xl">
+                  <span className="font-semibold">Height:</span>{" "}
+                  {breed.height.imperial} in
+                </p>
               </>
-            ) : (
-              <></>
             )}
-            <h3 className="text-xl font-semibold">
-              Temperament: {breed.temperament}
-            </h3>
-            <h3 className="text-xl font-semibold">Origin: {breed.origin}</h3>
+            <p className="text-xl">
+              <span className="font-semibold">Temperament:</span>{" "}
+              {breed.temperament ? breed.temperament : "unspecified"}
+            </p>
+            <p className="text-xl">
+              <span className="font-semibold">Origin:</span>{" "}
+              {breed.origin ? breed.origin : "unspecified"}
+            </p>
           </div>
         </div>
       </div>
 
-      {breed.description ? (
+      {breed.description && (
         <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h3 className="text-xl font-semibold">
-            Description: {breed.description}
-          </h3>
+          <h3 className="text-2xl font-semibold mb-4">Description</h3>
+          <p className="text-xl">{breed.description}</p>
         </div>
-      ) : (
-        <></>
       )}
 
       <div className="mt-8 mb-16 flex items-center justify-center">
