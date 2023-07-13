@@ -60,7 +60,7 @@ function ImageCarousel({ breedId, name, type }) {
                 <img
                   src={images[currentImageIndex].url}
                   alt={name}
-                  className="w-full h-auto rounded"
+                  className="object-cover w-full h-64 rounded"
                 />
                 <button
                   className="right-2 transform -translate-y-1/2 bg-gray-200 p-2 rounded-full absolute top-1/2 hover:bg-green/50 "
