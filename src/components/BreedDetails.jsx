@@ -1,10 +1,15 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import ImageCarousel from "./ImageCarousel";
 
 function BreedDetails() {
   const location = useLocation();
+  if (!location.state || !location.state.breed) {
+    return <Navigate to="/404" replace />;
+  }
   const { breed, type } = location.state;
+
+  
 
   return (
     <div className="pt-20 px-6">

@@ -1,10 +1,15 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import dog from "../assets/thedogapi.png";
 import cat from "../assets/thecatapi.png";
 
 function RenderCards({ breeds, type }) {
   const navigate = useNavigate();
+  const { name } = useParams();
+
+  useEffect(() => {
+    
+  }, [name, breeds, navigate]);
 
   const handleCardClick = (breed) => {
     if (type === "dog") {
@@ -42,7 +47,9 @@ function RenderCards({ breeds, type }) {
               </div>
             )}
             <div className="p-4">
-              <h3 className="text-lg font-semibold text-center">{breed.name}</h3>
+              <h3 className="text-lg font-semibold text-center">
+                {breed.name}
+              </h3>
             </div>
           </div>
         </div>

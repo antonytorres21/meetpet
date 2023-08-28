@@ -7,7 +7,7 @@ function Footer() {
         <h5>Develop by Roig Torres</h5>
         <p>
           Copyright © 2023 -
-          <a className="font-semibold" href="mailto:rt026000@gmail.com">
+          <a className="font-semibold cursor-pointer" href="mailto:rt026000@gmail.com">
             Roig Torres
           </a>
         </p>

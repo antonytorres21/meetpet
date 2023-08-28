@@ -8,6 +8,7 @@ import {
 import Pagination from "./Pagination";
 import LoadingSpinner from "./LoadingSpinner";
 import { IoIosSearch } from "react-icons/io";
+import { useNavigate, useParams } from "react-router-dom";
 
 function Cats() {
   const [breeds, setBreeds] = useState([]);
@@ -17,6 +18,8 @@ function Cats() {
   const [searchTerm, setSearchTerm] = useState("");
   const [refreshData, setRefreshData] = useState(false);
   const [showAllPages, setShowAllPages] = useState(false);
+  const navigate = useNavigate();
+  const {name} = useParams();
 
   const fetchBreeds = useCallback(async () => {
     try {
@@ -43,10 +46,17 @@ function Cats() {
       }
       setBreeds(data);
       setTotalPages(totalPages);
+
+      if (name) {
+        const isValid = data.some((breed) => breed.name === name);
+        if (!isValid) {
+          navigate("/404");
+        }
+      }
     } catch (error) {
       console.error(error);
     }
-  }, [currentPage, itemsPerPage, searchTerm]);
+  }, [currentPage, itemsPerPage, searchTerm, navigate, name]);
 
   useEffect(() => {
     fetchBreeds();
